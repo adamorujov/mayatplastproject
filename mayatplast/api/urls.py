@@ -8,6 +8,7 @@ urlpatterns = [
     path('statistics-list/', views.StatisticsListAPIView.as_view(), name="statistics-list"),
     path('contactinfo-list/', views.ContactInfoListAPIView.as_view(), name="contactinfo-list"),
     path('category-list/', views.CategoryListAPIView.as_view(), name="category-list"),
+    path('product-list/', views.ProductListAPIView.as_view(), name="product-list"),
     path('category-product-list/<int:id>/', views.CategoryProductListAPIView.as_view(), name="category-product-list"),
     path('product-retrieve/<int:id>/', views.ProductRetrieveAPIView.as_view(), name="product-retrieve"),
     path('news-list/', views.NewsListAPIView.as_view(), name="news-list"),

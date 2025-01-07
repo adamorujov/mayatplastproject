@@ -34,6 +34,10 @@ class CategoryListAPIView(ListAPIView):
     queryset = CategoryModel.objects.all()
     serializer_class = CategorySerializer
 
+class ProductListAPIView(ListAPIView):
+    queryset = ProductModel.objects.all()
+    serializer_class = ProductSerializer
+
 class CategoryProductListAPIView(ListAPIView):
     def get_queryset(self):
         category_id = self.kwargs.get("id")
