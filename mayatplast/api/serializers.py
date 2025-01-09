@@ -64,4 +64,4 @@ class ImageSerializer(serializers.ModelSerializer):
 class ContactUsSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactUsModel
-        fields = "__all__"
+        fields = ("name", "email", "message")
