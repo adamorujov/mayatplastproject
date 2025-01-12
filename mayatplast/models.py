@@ -63,7 +63,7 @@ class BannerModel(models.Model):
         return self.title
     
 class StatisticsModel(models.Model):
-    icon_name = models.CharField("İkon adı", max_length=50)
+    icon_name = models.TextField("İkon")
     title = models.TextField("Başlıq")
     text = models.TextField("Mətn")
 
