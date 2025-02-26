@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from mayatplast.models import (
     SettingsModel, SocialMediaModel, BannerModel, StatisticsModel, ContactInfoModel, 
-    CategoryModel, ProductModel, NewsTagModel, NewsModel, VideoModel, ImageModel, ContactUsModel
+    CategoryModel, ProductModel, NewsTagModel, NewsModel, VideoModel, ImageModel, ContactUsModel, DimensionModel
 )
 
 class SettingsSerializer(serializers.ModelSerializer):
@@ -34,8 +34,14 @@ class CategorySerializer(serializers.ModelSerializer):
         model = CategoryModel
         fields = "__all__"
 
+class DimensionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DimensionModel
+        fields = "__all__"
+
 class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
+    product_dimensions = DimensionSerializer(many=True)
     class Meta:
         model = ProductModel
         fields = "__all__"

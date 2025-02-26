@@ -98,6 +98,19 @@ class CategoryModel(models.Model):
 
     def __str__(self):
         return self.name
+    
+class DimensionModel(models.Model):
+    dimension1 = models.FloatField("1-ci ölçü", blank=True, null=True)
+    dimension2 = models.FloatField("2-ci ölçü", blank=True, null=True)
+    dimension3 = models.FloatField("3-cü ölçü", blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Ölçü"
+        verbose_name_plural = "Ölçülər"
+        ordering = ("-id",)
+
+    def __str__(self):
+        return "Ölçü " + str(self.id)
 
 class ProductModel(models.Model):
     #main
@@ -109,9 +122,7 @@ class ProductModel(models.Model):
     dimensions = HTMLField("Ölçülər", blank=True, null=True)
     category = models.ForeignKey(CategoryModel, verbose_name="Kateqoriya", on_delete=models.CASCADE, related_name="products")
     #parameters
-    dimension1 = models.FloatField("1-ci ölçü", blank=True, null=True)
-    dimension2 = models.FloatField("2-ci ölçü", blank=True, null=True)
-    dimension3 = models.FloatField("3-cü ölçü", blank=True, null=True)
+    product_dimensions = models.ManyToManyField(DimensionModel, verbose_name="Ölçü", related_name="d_products")
     #meta
     keywords = models.TextField("Açar sözlər", blank=True, null=True)
     description = models.TextField("İzah", blank=True, null=True)

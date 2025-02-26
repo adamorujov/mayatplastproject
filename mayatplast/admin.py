@@ -1,7 +1,7 @@
 from django.contrib import admin, messages
 from mayatplast.models import (
     SettingsModel, SocialMediaModel, BannerModel, StatisticsModel, ContactInfoModel, 
-    CategoryModel, ProductModel, NewsTagModel, NewsModel, VideoModel, ImageModel, ContactUsModel
+    CategoryModel, ProductModel, NewsTagModel, NewsModel, VideoModel, ImageModel, ContactUsModel, DimensionModel
 )
 from django.contrib.auth.models import Group
 
@@ -26,6 +26,11 @@ admin.site.register(BannerModel)
 admin.site.register(StatisticsModel)
 admin.site.register(ContactInfoModel)
 admin.site.register(CategoryModel)
+
+@admin.register(DimensionModel)
+class DimensionAdmin(admin.ModelAdmin):
+    list_display = ("__str__", "dimension1", "dimension2", "dimension3")
+
 admin.site.register(ProductModel)
 admin.site.register(NewsTagModel)
 admin.site.register(NewsModel)
@@ -83,12 +88,13 @@ def get_app_list(self, request, app_label=None):
                     "Statistikalar": 4,
                     "Əlaqə məlumatları": 5,
                     "Kateqoriyalar": 6,
-                    "Məhsullar": 7,
-                    "Xəbər teqləri": 8,
-                    "Xəbərlər": 9,
-                    "Fotolar": 10,
-                    "Videolar": 11,
-                    "Mesajlar": 12
+                    "Ölçülər": 7,
+                    "Məhsullar": 8,
+                    "Xəbər teqləri": 9,
+                    "Xəbərlər": 10,
+                    "Fotolar": 11,
+                    "Videolar": 12,
+                    "Mesajlar": 13
                 }
                 app['models'].sort(key=lambda x: ordering[x['name']])
 
